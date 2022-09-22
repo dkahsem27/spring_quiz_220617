@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+ <mapper namespace="com.quiz.lesson03.dao.RealEstateDAO">
+ 	<select id="selectRealEstateById" parameterType="int" resultType="com.quiz.lesson03.model.RealEstate">
+ 		SELECT
+ 			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			`id` = #{id}
+ 	</select>
+ 	
+ 	<!-- parameterType: int, integer, Integer 모두 가능 -->
+ 	<select id="selectRealEstateListByRentPrice" parameterType="int" 
+ 	resultType="com.quiz.lesson03.model.RealEstate">
+ 		SELECT
+ 			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			<![CDATA[
+			`rentPrice` < #{rentPrice}
+			]]>
+ 	</select>
+ 	
+ 	<!-- DAO에서 @Param을 붙여서 여러개 타입을 가져오는 경우 parameterType="map" -->
+ 	<select id="selectRealEstateListByAreaAndPrice" parameterType="map" 
+ 	resultType="com.quiz.lesson03.model.RealEstate">
+ 		SELECT
+ 			`id`
+			,`realtorId`
+			,`address`
+			,`area`
+			,`type`
+			,`price`
+			,`rentPrice`
+			,`createdAt`
+			,`updatedAt`
+		FROM
+			`real_estate`
+		WHERE
+			<![CDATA[
+			`type` = "매매"
+			and `area` >= #{area}
+			and `price` <= #{price}
+			]]>
+		ORDER BY
+			`id` desc
+ 	</select>
+ </mapper>
