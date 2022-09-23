@@ -58,11 +58,11 @@
 			`real_estate`
 		WHERE
 			<![CDATA[
-			`type` = "매매"
-			and `area` >= #{area}
-			and `price` <= #{price}
+			`type` = '매매'
+			AND `area` >= #{area}
+			AND `price` <= #{price}
 			]]>
 		ORDER BY
-			`id` desc
+			`id` DESC
  	</select>
  </mapper>

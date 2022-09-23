@@ -18,6 +18,7 @@ public class RealEstateBO {
 		return realEstateDAO.selectRealEstateById(id);
 	}
 	
+	// input:월세, output:List<RealEstate>
 	public List<RealEstate> getRealEstateListByRentPrice(int rentPrice) {
 		return realEstateDAO.selectRealEstateListByRentPrice(rentPrice);
 	}
