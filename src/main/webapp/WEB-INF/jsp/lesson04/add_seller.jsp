@@ -21,11 +21,11 @@
 				<input type="text" name="nickname" id="nickname" class="form-control col-3" placeholder="닉네임을 입력하세요">
 			</div>
 			<div class="form-group">
-				<label for="profileImageUrl">프로필 사진 url</label>
+				<label for="profileImageUrl">프로필 사진 URL</label>
 				<input type="text" name="profileImageUrl" id="profileImageUrl" class="form-control col-9" placeholder="URL을 입력하세요">
 			</div>
 			<div class="form-group">
-				<label for="temperature">온도</label>
+				<label for="temperature">매너 온도</label>
 				<input type="text" name="temperature" id="temperature" class="form-control col-3" placeholder="온도를 입력하세요">
 			</div>
 			<input type="submit" class="btn btn-primary" value="추가">

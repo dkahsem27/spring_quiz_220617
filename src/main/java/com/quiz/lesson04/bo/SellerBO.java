@@ -16,7 +16,11 @@ public class SellerBO {
 		sellerDAO.insertSeller(nickname, profileImageUrl, temperature);
 	}
 	
-	public Seller getSellerInfo(int id) {
-		return sellerDAO.selectSellerInfo(id);
+	public Seller getLastestSeller() {
+		return sellerDAO.selectLastestSeller();
+	}
+	
+	public Seller getSellerById(int id) { // BO는 항상 null이 아닌 것만 받게 되어있으므로 int
+		return sellerDAO.selectSellerById(id);
 	}
 }

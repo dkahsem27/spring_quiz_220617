@@ -21,10 +21,10 @@
 	<div class="container">
 		<h1>${subject}</h1>
 		<div class="image">
-			<img src="${result.profileImageUrl}" alt="프로필사진">
+			<img src="${seller.profileImageUrl}" alt="프로필사진">
 		</div>
-		<div class="display-4">${result.nickname}</div>
-		<h2 class="text-warning">${result.temperature}</h2>
+		<div class="display-3">${seller.nickname}</div>
+		<div class="display-4 text-warning">${seller.temperature}</div>
 	</div>
 </body>
 </html>
