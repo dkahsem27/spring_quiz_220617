@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공인중개사 추가</title>
+<title>${title}</title>
 	<!-- bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -14,26 +14,29 @@
 </head>
 <body>
 	<div class="container">
-		<h1>공인중개사 추가</h1>
-		<form method="post" action="/lesson04/quiz02/add_realtor">
-			<div class="form-group">
-				<label for="office">상호명</label>
-				<input type="text" name="office" id="office" class="form-control col-3" placeholder="이름을 입력하세요">
-			</div>
-			<div class="form-group">
-				<label for="phoneNumber">전화번호</label>
-				<input type="text" name="phoneNumber" id="phoneNumber" class="form-control col-3" placeholder="예) 02-111-1111">
-			</div>
-			<div class="form-group">
-				<label for="address">주소</label>
-				<input type="text" name="address" id="address" class="form-control col-3" placeholder="주소를 입력하세요">
-			</div>
-			<div class="form-group">
-				<label for="grade">등급</label>
-				<input type="text" name="grade" id="grade" class="form-control col-3" placeholder="예) 안심/일반/프리미엄중개사"></input>
-			</div>
-			<input type="submit" class="btn btn-primary" value="추가">
-		</form>
+		<h1>${title}</h1>
+		<table class="table table-striped">
+			<tr>
+				<th>ID</th>
+				<td>${realtor.id}</td>
+			</tr>
+			<tr>
+				<th>상호명</th>
+				<td>${realtor.office}</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>${realtor.phoneNumber}</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>${realtor.address}</td>
+			</tr>
+			<tr>
+				<th>등급</th>
+				<td>${realtor.grade}</td>
+			</tr>
+		</table>
 	</div>
 </body>
 </html>
