@@ -36,6 +36,14 @@
 				<th>등급</th>
 				<td>${realtor.grade}</td>
 			</tr>
+			<tr>
+				<th>생성일</th>
+				<td>${realtor.createdAt}</td>
+			</tr>
+			<tr>
+				<th>수정일</th>
+				<td>${realtor.updatedAt}</td>
+			</tr>
 		</table>
 	</div>
 </body>

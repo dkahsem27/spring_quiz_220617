@@ -30,13 +30,17 @@ public class Lesson04Quiz02Controller {
 			@ModelAttribute Realtor realtor,
 			Model model) {
 		
+		// insert
 		realtorBO.addRealtor(realtor);
 		
+		// select by id
 		Realtor currentRealtor = realtorBO.getRealtorById(realtor.getId());
 		
+		// model
 		model.addAttribute("realtor", currentRealtor);
 		model.addAttribute("title", "공인중개사 정보");
 		
+		// jsp
 		return "lesson04/afterAddRealtor";
 	}
 }
