@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+#wrap {width: 100%;}
+aside {width: 18%; max-width: 200px; height: calc(100vh - 80px); background: #bbb;}
+aside .logo {display: block; text-align: center;}
+aside .logo > img {max-width: 100px;}
+aside .menu .nav .nav-item .nav-link {font-size: 20px; font-weight: bold; color: #fff;}
+
+.contents {width: 100%;}
+
+footer {height: 80px;}
+footer .logo {width: 18%;}
+footer .logo > img {max-width: 120px;}
+footer address {width: 100%; font-size: 14px;}

@@ -34,7 +34,7 @@ public class Lesson05Controller {
 		return "lesson05/quiz02_1";
 	}
 
-	@GetMapping("quiz02/2")
+	@GetMapping("/quiz02/2")
 	public String quiz02_2(Model model) {
 
 		List<Map<String, Object>> membership = new ArrayList<>();
@@ -79,7 +79,7 @@ public class Lesson05Controller {
 		return "lesson05/quiz02_2";
 	}
 	
-	@RequestMapping("quiz03/1")
+	@RequestMapping("/quiz03/1")
 	public String quiz03_1(Model model) {
 		
 		List<Integer> candidates = new ArrayList<>();
@@ -98,7 +98,7 @@ public class Lesson05Controller {
 		return "lesson05/quiz03_1";
 	}
 	
-	@RequestMapping("quiz03/2")
+	@RequestMapping("/quiz03/2")
 	public String quiz03_2(Model model) {
 		
 		List<Map<String, Object>> cardBills = new ArrayList<>();
@@ -129,7 +129,7 @@ public class Lesson05Controller {
 		return "lesson05/quiz03_2";
 	}
 	
-	@RequestMapping("quiz04")
+	@RequestMapping("/quiz04")
 	public String quiz04(Model model) {
 		
 		List<Member> members = new ArrayList<>();
@@ -186,4 +186,5 @@ public class Lesson05Controller {
 		
 		return "lesson05/quiz04";
 	}
+	
 }
