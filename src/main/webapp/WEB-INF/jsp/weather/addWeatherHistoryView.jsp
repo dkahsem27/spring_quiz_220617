@@ -18,68 +18,57 @@
 <body>
 	<div id="wrap">
 		<div class="d-flex">
-			<aside>
-				<a href="/weather_history_view" class="logo py-3"><img src="/img/kmaLogo.png" alt="로고"></a>
-				<nav class="menu py-3">
-					<ul class="nav flex-column">
-						<li class="nav-item"><a href="#" class="nav-link">날씨</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">날씨입력</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">테마날씨</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">관측 기후</a></li>
-					</ul>
-				</nav>
-			</aside>
+			<!-- header -->
+			<jsp:include page="header.jsp" />
+			<!-- contents:날씨입력 -->
 			<div class="contents py-3 px-5">
-				<h2>날씨 입력</h2>
+				<h2 class="mb-5">날씨 입력</h2>
 				<div class="form-outer">
-					<form method="post" action="">
+					<form method="post" action="/weatherHistoryView">
 						<div class="d-flex justify-content-between align-items-center">
-							<div class="input-group">
+							<div class="input-group align-items-center">
 								<label for="date">날짜</label>
-								<input type="text" id="date" name="date" class="form-control">
+								<input type="text" id="date" name="date" class="form-control ml-2">
 							</div>
-							<div class="input-group ml-5">
+							<div class="input-group align-items-center ml-5">
 								<label for="weather">날씨</label>
-								<select id="weather" name="weather" class="form-control">
+								<select id="weather" name="weather" class="form-control ml-2">
 									<option>-</option>
 								</select>
 							</div>
-							<div class="input-group ml-5">
-								<label for="weather">미세먼지</label>
-								<select id="weather" name="weather" class="form-control">
+							<div class="input-group align-items-center ml-5">
+								<label for="microDust">미세먼지</label>
+								<select id="microDust" name="microDust" class="form-control ml-2">
 									<option>-</option>
 								</select>
 							</div>
 						</div>
-						<div class="d-flex justify-content-between align-items-center">
-							<div class="input-group">
+						<div class="d-flex justify-content-between align-items-center mt-3">
+							<div class="input-group align-items-center">
 								<label for="temperatures">기온</label>
-							  	<input type="text" class="form-control">
-							  	<span class="input-group-text" id="temperatures">C</span>
+							  	<input type="text" id="temperatures" name="temperatures" class="form-control ml-2">
+							  	<span class="input-group-text" id="temperatures">℃</span>
 							</div>
-							<div class="input-group ml-5">
-								<label for="temperatures">강수량</label>
-							  	<input type="text" class="form-control">
-							  	<span class="input-group-text" id="temperatures">mm</span>
+							<div class="input-group align-items-center ml-5">
+								<label for="precipitation">강수량</label>
+							  	<input type="text" id="precipitation" name="precipitation" class="form-control ml-2">
+							  	<span class="input-group-text" id="precipitation">mm</span>
 							</div>
-							<div class="input-group ml-5">
-								<label for="temperatures">풍속</label>
-							  	<input type="text" class="form-control">
-							  	<span class="input-group-text" id="temperatures">km/h</span>
+							<div class="input-group align-items-center ml-5">
+								<label for="windSpeed">풍속</label>
+							  	<input type="text" id="windSpeed" name="windSpeed" class="form-control ml-2">
+							  	<span class="input-group-text" id="windSpeed">km/h</span>
 							</div>
 						</div>
-						<button type="submit" class="btn btn-success">저장</button>
+						<div class="d-flex justify-content-end mt-4">
+							<button type="submit" class="btn btn-success">저장</button>
+						</div>
 					</form>
 				</div>
 			</div>
 		</div>
-		<footer class="d-flex py-3">
-			<div class="logo px-3"><img src="/img/kmaLogo.png" alt="로고"></div>
-			<address class="px-5 text-secondary">
-				<div class="address">(07062) 서울시 동작구 여의대방로16길 61</div>
-				<div class="copyright">Copyright@2020 KMA. All Rights RESERVED.</div>
-			</address>
-		</footer>
+		<!-- footer -->
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>

@@ -1,14 +1,21 @@
 @charset "UTF-8";
 
+/* common */
 #wrap {width: 100%;}
-aside {width: 18%; max-width: 200px; height: calc(100vh - 80px); background: #bbb;}
-aside .logo {display: block; text-align: center;}
+label {margin-bottom: 0;}
+
+/* header */
+aside {width: 100%; min-width: 150px; max-width: 180px; height: calc(100vh - 80px); background: skyblue; border-right: 1px solid #ddd;}
+aside .logo {display: block; text-align: center; background: #fff;}
 aside .logo > img {max-width: 100px;}
-aside .menu .nav .nav-item .nav-link {font-size: 20px; font-weight: bold; color: #fff;}
+aside .menu .nav .nav-item .nav-link {font-size: 18px; font-weight: bold; color: #fff;}
 
+/* contents */
 .contents {width: 100%;}
+.form-outer label {min-width: 70px; font-weight: bold;}
 
-footer {height: 80px;}
-footer .logo {width: 18%;}
+/* footer */
+footer {height: 80px; background: #fff; border-top: 1px solid #ddd;}
+footer .logo {width: 100%; min-width: 150px; max-width: 180px;}
 footer .logo > img {max-width: 120px;}
-footer address {width: 100%; font-size: 14px;}
+footer address {width: 100%; font-size: 13px;}

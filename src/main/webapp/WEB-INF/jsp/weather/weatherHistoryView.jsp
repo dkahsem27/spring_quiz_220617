@@ -18,19 +18,11 @@
 <body>
 	<div id="wrap">
 		<div class="d-flex">
-			<aside>
-				<a href="/weather_history_view" class="logo py-3"><img src="/img/kmaLogo.png" alt="로고"></a>
-				<nav class="menu py-3">
-					<ul class="nav flex-column">
-						<li class="nav-item"><a href="#" class="nav-link">날씨</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">날씨입력</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">테마날씨</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">관측 기후</a></li>
-					</ul>
-				</nav>
-			</aside>
+			<!-- header -->
+			<jsp:include page="header.jsp" />
+			<!-- contents:과거날씨 -->
 			<div class="contents py-3 px-5">
-				<h2>과거 날씨</h2>
+				<h2 class="mb-5">과거 날씨</h2>
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -44,24 +36,19 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td>2015년 7월 1일</td>
+							<td><img src="/img/cloudy.jpg" alt="날씨이미지"></td>
+							<td>21.9℃</td>
+							<td>83.5mm</td>
+							<td>보통</td>
+							<td>2.9km/h</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		<footer class="d-flex py-3">
-			<div class="logo px-3"><img src="/img/kmaLogo.png" alt="로고"></div>
-			<address class="px-5 text-secondary">
-				<div class="address">(07062) 서울시 동작구 여의대방로16길 61</div>
-				<div class="copyright">Copyright@2020 KMA. All Rights RESERVED.</div>
-			</address>
-		</footer>
+		<!-- footer -->
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>
