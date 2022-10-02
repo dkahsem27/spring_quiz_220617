@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,7 +25,7 @@
 			<jsp:include page="header.jsp" />
 			<!-- contents:과거날씨 -->
 			<div class="contents py-3 px-5">
-				<h2 class="mb-5">과거 날씨</h2>
+				<h2 class="mb-5 font-weight-bold">과거 날씨</h2>
 				<table class="table text-center">
 					<thead>
 						<tr>
@@ -35,14 +38,34 @@
 						</tr>
 					</thead>
 					<tbody>
+					<c:forEach items="${weatherhistory}" var="weather">
 						<tr>
-							<td>2015년 7월 1일</td>
-							<td><img src="/img/cloudy.jpg" alt="날씨이미지"></td>
-							<td>21.9℃</td>
-							<td>83.5mm</td>
-							<td>보통</td>
-							<td>2.9km/h</td>
+							<td>
+								<fmt:parseDate value="${weather.date}" pattern="yyyy-MM-dd HH:mm:ss" var="stringToDate" />
+								<fmt:formatDate value="${stringToDate}" pattern="yyyy년 M월 d일" />
+							</td>
+							<td>
+							<c:choose>
+								<c:when test="${weather.weather eq '흐림'}">
+									<img src="/img/cloudy.jpg" alt="흐림">
+								</c:when>
+								<c:when test="${weather.weather eq '구름조금'}">
+									<img src="/img/partlyCloudy.jpg" alt="구름조금">
+								</c:when>
+								<c:when test="${weather.weather eq '비'}">
+									<img src="/img/rainy.jpg" alt="비">
+								</c:when>
+								<c:when test="${weather.weather eq '맑음'}">
+									<img src="/img/sunny.jpg" alt="맑음">
+								</c:when>
+							</c:choose>
+							</td>
+							<td>${weather.temperatures}℃</td>
+							<td>${weather.precipitation}mm</td>
+							<td>${weather.microDust}</td>
+							<td>${weather.windSpeed}km/h</td>
 						</tr>
+					</c:forEach>
 					</tbody>
 				</table>
 			</div>
