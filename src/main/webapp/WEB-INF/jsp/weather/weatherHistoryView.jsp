@@ -58,6 +58,9 @@
 								<c:when test="${weather.weather eq '맑음'}">
 									<img src="/img/sunny.jpg" alt="맑음">
 								</c:when>
+								<c:otherwise>
+									${weather.weather}
+								</c:otherwise>
 							</c:choose>
 							</td>
 							<td>${weather.temperatures}℃</td>

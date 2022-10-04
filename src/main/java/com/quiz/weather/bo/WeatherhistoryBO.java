@@ -18,7 +18,11 @@ public class WeatherhistoryBO {
 		return weatherhistoryDAO.selectWeatherhistory();
 	}
 	
-	public void addWeatherhistory(Weatherhistory weatherhistory) {
-		weatherhistoryDAO.insertWeatherhistory(weatherhistory);
+	// public void addWeatherhistory(Weatherhistory weatherhistory) {
+	// 	weatherhistoryDAO.insertWeatherhistory(weatherhistory);
+	// }
+	
+	public void addWeatherhistory(String date, String weather, double temperatures, double precipitation, String microDust, double windSpeed) {
+		weatherhistoryDAO.insertWeatherhistory(date, weather, temperatures, precipitation, microDust, windSpeed);
 	}
 }

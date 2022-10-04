@@ -85,8 +85,9 @@
 	<script>
 		$(document).ready(function() {
 			$('#date').datepicker({
-				dateFormat: "yy-mm-dd",
-				timeFormat: "hh:mm:ss"
+				dateFormat: 'yy-mm-dd'
+				, changeYear: true
+				, changeMonth: true
 			});
 		});
 	</script>
