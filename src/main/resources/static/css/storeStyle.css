@@ -1,0 +1,12 @@
+@charset "UTF-8";
+
+#wrap {width: 100%; max-width: 720px; margin: 0 auto;}
+
+/* common */
+a {text-decoration: none !important;}
+
+/* header */
+header > h1 > a {display: block;}
+
+/* footer */
+footer {border-top: 1px solid #ddd;}
