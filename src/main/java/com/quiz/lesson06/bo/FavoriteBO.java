@@ -21,4 +21,13 @@ public class FavoriteBO {
 	public List<Favorite> getFavoriteList() {
 		return favoriteDAO.selectFavoriteList();
 	}
+	
+	public Favorite getFavoriteByUrl(String url) {
+		List<Favorite> favoriteList = favoriteDAO.selectFavoriteByUrl(url);
+		if (favoriteList.isEmpty()) {
+			return null;  // 중복이 아닐 경우 null 리턴
+		}
+		
+		return favoriteList.get(0);  // 중복이면 첫번째 데이터를 리턴한다.
+	}
 }

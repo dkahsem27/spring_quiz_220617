@@ -25,55 +25,106 @@
 		</div>
 		<div class="form-group">
 			<label for="url">주소</label>
-			<input type="text" id="url" class="form-control">
+			<div class="d-flex">
+				<input type="text" id="url" class="form-control">
+				<button type="button" id="urlCheckBtn" class="btn btn-info ml-2">중복확인</button>
+			</div>
+			<small id="isDuplicationText" class="text-danger d-none">중복된 url 입니다.</small>
+			<small id="availableText" class="text-success d-none">저장 가능한 url 입니다.</small>
 		</div>
 		
 		<button type="button" id="addBtn" class="btn btn-success w-100">추가</button>
 	</div>
 	
-	<script>
-		$(document).ready(function() {
-			$('#addBtn').on('click', function(e) {
-				e.preventDefault();
-				
-				// validation
-				let name = $('#name').val().trim();
-				let url = $('#url').val().trim();
-				if (name == "") {
-					alert("제목을 입력하세요");
-					return;
+<script>
+$(document).ready(function() {
+
+	$('#addBtn').on('click', function(e) {
+		e.preventDefault();
+		
+		// validation
+		let name = $('#name').val().trim();
+		let url = $('#url').val().trim();
+		if (name == "") {
+			alert("제목을 입력하세요");
+			return;
+		}
+		if (url == "") {
+			alert("주소를 입력하세요");
+			return;
+		}
+		if (url.startsWith("http") == false && url.startsWith("https") == false) {
+			alert("주소 형식이 잘못되었습니다");
+			return;
+		}
+		
+		// 중복확인 완료 확인
+		if ($('#availableText').hasClass('d-none')) { // d-none이 있으면 확인 안된 것
+			alert("중복된 url 입니다. 중복 확인을 해 주세요");
+			return;
+		}
+		
+		// AJAX - 서버에 인서트 요청
+		$.ajax({
+			// req
+			type: "POST"
+			, url: "/lesson06/add_favorite"
+			, data: {"name":name, "url":url}
+		
+			// res
+			, success: function(data) {  // data 파라미터는 요청에 대한 응답값이다.
+				//alert(data);
+				if (data == "success") {
+					location.href = "/lesson06/get_favorite_view";
+				} else {
+					alert("입력 실패");
 				}
-				if (url == "") {
-					alert("주소를 입력하세요");
-					return;
-				}
-				if (url.startsWith("http") == false && url.startsWith("https") == false) {
-					alert("주소 형식이 잘못되었습니다");
-					return;
-				}
-				
-				// AJAX - 서버에 인서트 요청
-				$.ajax({
-					// req
-					type: "POST"
-					, url: "/lesson06/quiz01/add_favorite"
-					, data: {"name":name, "url":url}
-				
-					// res
-					, success: function(data) {  // data 파라미터는 요청에 대한 응답값이다.
-						//alert(data);
-						if (data == "success") {
-							location.href = "/lesson06/quiz01/get_favorite_view";
-						} else {
-							alert("입력 실패");
-						}
-					}
-					, error: function(e) {  // request, status, error
-						alert("에러:" + e);
-					}
-				});
-			});
+			}
+			, error: function(e) {  // request, status, error
+				alert("에러:" + e);
+			}
 		});
-	</script>
+	});
+	
+	// 중복확인 버튼 클릭
+	$('#urlCheckBtn').on('click', function() {
+		// #urlStatusArea 하위 태그 초기화
+		$('#urlStatusArea').empty();
+		
+		// validation
+		let url = $('#url').val().trim();
+		if (url == "") {
+			alert("검사할 url을 입력하세요");
+			return;
+		}
+		
+		// 중복 검사
+		$.ajax({
+			// req
+			type:"POST"
+			, url:"/lesson06/is_duplication_url"
+			, data:{"url":url}
+			
+			// res
+			, success:function(data) {  // json string => object 화(jquery ajax 함수가 파싱해줌)
+				//alert(data.is_duplication);
+				if(data.isDuplication) {
+					// 중복
+					$('#isDuplicationText').removeClass('d-none');
+					$('#availableText').addClass('d-none');
+				} else {
+					// 사용 가능
+					$('#isDuplicationText').addClass('d-none');
+					$('#availableText').removeClass('d-none');
+				}
+			}
+			, error:function(e) {
+				alert("중복 확인 실패");
+			}
+		});
+	});
+	
+});
+</script>
 </body>
 </html>

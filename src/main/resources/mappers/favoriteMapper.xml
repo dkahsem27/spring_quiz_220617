@@ -30,4 +30,17 @@
  		FROM
  			`favorite`
  	</select>
+ 	
+ 	<select id="selectFavoriteByUrl" resultType="com.quiz.lesson06.model.Favorite">
+ 		SELECT
+ 			`id`
+ 			, `name`
+			, `url`
+			, `createdAt`
+			, `updatedAt`
+ 		FROM
+ 			`favorite`
+ 		WHERE
+ 			`url` = #{url}
+ 	</select>
  </mapper>

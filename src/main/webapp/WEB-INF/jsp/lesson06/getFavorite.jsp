@@ -24,7 +24,7 @@
 				<tr>
 					<th>No.</th>
 					<th>이름</th>
-					<th>주소</th>
+					<th colspan="2">주소</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -33,10 +33,38 @@
 					<td>${favorite.id}</td>
 					<td>${favorite.name}</td>
 					<td>${favorite.url}</td>
+					<td>
+						<button id="deleteBtn" class="btn btn-danger">삭제</button>
+					</td>
 				</tr>
 				</c:forEach>
 			</tbody>
 		</table>
 	</div>
+
+<script>
+$(document).ready(function() {
+	$('#deleteBtn').on('click', function() {
+		$.ajax({
+			// req
+			type: "POST"
+			, url: "/lesson06/delete_favorite"
+			, data: {"name":name, "url":url}
+		
+			// res
+			, success: function(data) {
+				if (data == "success") {
+					location.href = "/lesson06/quiz01/get_favorite_view";
+				} else {
+					alert("삭제 실패");
+				}
+			}
+			, error: function(e) {
+				alert("에러" + e);
+			}
+		});
+	});
+});
+</script>
 </body>
 </html>
