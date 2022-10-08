@@ -23,7 +23,33 @@
 		<jsp:include page="header.jsp" />
 		<!-- contents -->
 		<div class="contents">
-			리스트
+			<h2 class="text-center py-3">예약 목록 보기</h2>
+			<table class="table text-center mb-5">
+				<thead>
+					<tr>
+						<th>이름</th>
+						<th>예약날짜</th>
+						<th>숙박일수</th>
+						<th>숙박인원</th>
+						<th>전화번호</th>
+						<th>예약상태</th>
+						<th><%-- 빈태그 --%></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>강하늘</td>
+						<td>2025년 7월 21일</td>
+						<td>1</td>
+						<td>2</td>
+						<td>010-1234-5678</td>
+						<td>대기중</td>
+						<td>
+							<button type="button" class="btn btn-danger">삭제</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<!-- footer -->
 		<jsp:include page="footer.jsp" />
