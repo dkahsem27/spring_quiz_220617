@@ -2,9 +2,10 @@
 
 /* reset */
 a {text-decoration: none !important;}
-label {margin-bottom: 0 !important;}
+table td, table th {vertical-align: middle !important;}
 
-#wrap {}
+/* common */
+#date {width: 100%;}
 
 /* header */
 #header {}
@@ -18,10 +19,11 @@ label {margin-bottom: 0 !important;}
 #footer address {margin-bottom: 0; border-top: 1px solid #ddd;}
 
 /* contents */
-.banner-image-area > img {max-width: 100%; object-fit: cover;}
+.banner-image-area > img {min-width: 100%; max-width: 100%; max-height: 460px; object-fit: cover;}
 .booking-confirm-area .left-area {background: burlywood; font-size: 45px; line-height: 1.2; color: #fff;}
 .booking-confirm-area .confirm-area {background: papayawhip;}
-.booking-confirm-area .confirm-area label {width: 100px; font-size: 14px; font-weight: bold;}
+.booking-confirm-area .confirm-area label {min-width: 70px; font-size: 14px; font-weight: bold;}
 .booking-confirm-area .right-area {background: burlywood; font-size: 35px; line-height: 1.2; color: #fff;}
 
 .form-outer {margin: 0 auto;}
+.form-outer label {font-weight: bold;}
