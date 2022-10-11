@@ -11,19 +11,18 @@ import com.quiz.booking.model.Booking;
 @Repository
 public interface BookingDAO {
 
-	public List<Booking> selectBooking();
+	public List<Booking> selectBookingList();
 	
-	public void insertBooking(
+	public int insertBooking(
 			@Param("name") String name, 
 			@Param("date") Date date, 
 			@Param("day") int day, 
 			@Param("headcount") int headcount, 
-			@Param("phoneNumber") String phoneNumber,
-			@Param("state") String state);
+			@Param("phoneNumber") String phoneNumber);
 	
-	public int deleteBooking(int id);
+	public int deleteBookingById(int id);
 	
-	public List<Booking> selectBookingByNameAndPhoneNumber(
+	public List<Booking> selectBookingListByNamePhoneNumber(
 			@Param("name") String name, 
 			@Param("phoneNumber") String phoneNumber);
 }

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>통나무 펜션</title>
     <%-- Ajax를 사용하려면 jquery 원본이 있어야 한다. --%>
-	<!-- jquery : bootstrap, datepicker -->
+	<!-- jquery : ajax, bootstrap, datepicker -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>  
 
     <!-- bootstrap -->
@@ -139,14 +139,15 @@ $(document).ready(function() {
 			// req
 			type: "POST"
 			, url: "/booking/add_booking"
-			, data: {"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber, "state":"대기중"}
+			, data: {"name":name, "date":date, "day":day, "headcount":headcount, "phoneNumber":phoneNumber}
 			
 			// res
 			, success: function(data) {
-				if (data == "성공") {
+				if (data.code == 100) {
+					alert("예약되었습니다.");
 					location.href = "/booking/booking_list_view";
 				} else {
-					alert("예약 추가 실패");
+					alert(data.errorMessage);
 				}
 			}
 			, error: function(e) {

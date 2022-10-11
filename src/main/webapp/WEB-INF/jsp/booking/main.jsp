@@ -66,7 +66,7 @@ $(document).ready(function() {
 		$('#bannerImage').attr('src', bannerSrcArr[currentIndex]);
 		currentIndex++;
 		
-		if (currentIndex > bannerSrcArr.length) {
+		if (currentIndex >= bannerSrcArr.length) {
 			currentIndex = 0;
 		}
 	}, 3000);
@@ -101,14 +101,13 @@ $(document).ready(function() {
 			
 			// res
 			, success: function(data) {
-				if (data.result != "") {
+				if (data.code == 100) {
 					// 조회됨 (내역 있음)
-					let sliceDate = data.result[0].date.slice(0, 10);
-					alert("이름: " + data.result[0].name + "\n" +
-							"날짜: " + sliceDate + "\n" +
-							"일수: " + data.result[0].day + "\n" +
-							"인원: " + data.result[0].headcount + "\n" +
-							"상태: " + data.result[0].state);
+					alert("이름: " + data.booking.name + "\n" +
+							"날짜: " + data.booking.date.slice(0, 10) + "\n" +
+							"일수: " + data.booking.day + "\n" +
+							"인원: " + data.booking.headcount + "\n" +
+							"상태: " + data.booking.state);
 				} else {
 					// 내역 없음
 					alert("예약 내역이 없습니다");

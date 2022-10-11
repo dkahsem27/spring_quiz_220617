@@ -52,14 +52,14 @@
 						<td>
 							<c:choose>
 								<c:when test="${booking.state eq '대기중'}">
-									<span class="text-success">대기중</span>
+									<span class="text-success">${booking.state}</span>
 								</c:when>
 								<c:when test="${booking.state eq '확정'}">
-									<span class="text-info">확정</span>
+									<span class="text-info">${booking.state}</span>
 								</c:when>
-								<%-- <c:otherwise>
-									<span class="text-success">대기중</span>
-								</c:otherwise> --%>
+								<c:when test="${booking.state eq '취소'}">
+									<span class="text-danger">${booking.state}</span>
+								</c:when>
 							</c:choose>
 						</td>
 						<td>
@@ -91,6 +91,7 @@ $(document).ready(function() {
 				// res
 				, success: function(data) {
 					if (data.code == 100) {
+						alert("삭제되었습니다.");
 						location.reload();
 					} else {
 						alert(data.errorMessage);

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import com.quiz.booking.dao.BookingDAO;
 import com.quiz.booking.model.Booking;
@@ -15,19 +16,24 @@ public class BookingBO {
 	@Autowired
 	private BookingDAO bookingDAO;
 	
-	public List<Booking> getBooking() {
-		return bookingDAO.selectBooking();
+	public List<Booking> getBookingList() {
+		return bookingDAO.selectBookingList();
 	}
 
-	public void addBooking(String name, Date date, int day, int headcount, String phoneNumber, String state) {
-		bookingDAO.insertBooking(name, date, day, headcount, phoneNumber, state);
+	public int addBooking(String name, Date date, int day, int headcount, String phoneNumber) {
+		return bookingDAO.insertBooking(name, date, day, headcount, phoneNumber);
 	}
 	
-	public int deleteBooking(int id) {
-		return bookingDAO.deleteBooking(id);
+	public int deleteBookingById(int id) {
+		return bookingDAO.deleteBookingById(id);
 	}
 	
-	public List<Booking> getBookingByNameAndPhoneNumber(String name, String phoneNumber) {
-		return bookingDAO.selectBookingByNameAndPhoneNumber(name, phoneNumber);
+	public Booking getLatestBooking(String name, String phoneNumber) {
+		List<Booking> bookingList = bookingDAO.selectBookingListByNamePhoneNumber(name, phoneNumber);  // [], 채워져있거나 (null이 나올 수 없음)
+		if (CollectionUtils.isEmpty(bookingList)) {
+			return null;
+		} 
+		
+		return bookingList.get(bookingList.size() - 1); // 마지막(최신) 인덱스 데이터 가져옴
 	}
 }
